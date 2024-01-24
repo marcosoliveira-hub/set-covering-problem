@@ -146,7 +146,7 @@ def localSearchAlgorithm(columns, initialSolution, numRows):
     
     S_line = [column for column in columns if column not in initialSolution]
     
-    p1 = random.uniform(0.05, 0.9)
+    p1 = random.uniform(0.05, 0.7)
     p2 = random.uniform(1.1, 2)
     
     D = math.ceil(N_S * p1)
@@ -168,13 +168,15 @@ def localSearchAlgorithm(columns, initialSolution, numRows):
     while len(U) > 0:
         S_line_E = [column for column in S_line if column.cost <= E]
         
-        alpha = [sum([1 for i in column.coveredRows if i in solutionCoveredRows]) for column in S_line_E]
+        alpha = []
+        for column in S_line_E:
+            vj = 0
+            for line in column.coveredRows:
+                if line in U:
+                    vj += 1
+            alpha.append(vj)
         
         beta = [S_line_E[i].cost / aj if aj > 0 else float('inf') for i, aj in enumerate(alpha)]
-        
-        if len(beta) == 0:
-            print("beta is empty")
-            break
         
         minBeta = min(beta)
         
@@ -210,16 +212,19 @@ def main():
     
     displayResult(greedySolution)
     
-    solution = greedySolution.copy()
+    bestSolutionFound = greedySolution.copy()
     
-    for _ in range(20000):
-        aux = localSearchAlgorithm(columns, solution, numRows)
-        random.shuffle(aux)
-        if calcTotalCost(aux) < calcTotalCost(solution):
-            solution = deepcopy(aux)
-            print(calcTotalCost(solution))
+    for _ in range(100):
+        solution = greedyAlgorithm(columns, numRows, numColumns)
+        for _ in range(1000):
+            aux = localSearchAlgorithm(columns, solution, numRows)
+            if calcTotalCost(aux) < calcTotalCost(solution):
+                solution = aux.copy()
+            if calcTotalCost(solution) < calcTotalCost(bestSolutionFound):
+                bestSolutionFound = solution.copy()
+                print(calcTotalCost(bestSolutionFound))
     
-    displayResult(solution)
+    displayResult(bestSolutionFound)
 
 if __name__ == "__main__":
     main()

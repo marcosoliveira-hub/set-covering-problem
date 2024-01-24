@@ -187,17 +187,17 @@ def valid_solution(solucao, dados):
 
 def main():
     arq = ler_arquivo('test1.txt')
-    solucao1, custo = construtivo(arq)
-    solucao = (solucao1, custo)
-    for _ in range(20000):
-        solucao = melhoramento(solucao, arq)
-        if solucao[1] < custo:
-            custo = solucao[1]
-            solucao1 = deepcopy(solucao[0])
-            print(custo)
+    # solucao1, custo = construtivo(arq)
+    # solucao = (solucao1, custo)
+    # for _ in range(1000):
+    #     solucao = melhoramento(solucao, arq)
+    #     if solucao[1] < custo:
+    #         custo = solucao[1]
+    #         solucao1 = deepcopy(solucao[0])
+    #         print(custo)
     
-    print(solucao1, custo)
-    #teste = construtivo(arq)
+    # print(solucao1, custo)
+    print(construtivo(arq))
     #print(melhoramento(teste, arq))
 
 
