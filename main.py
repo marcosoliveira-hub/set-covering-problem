@@ -2,12 +2,18 @@ import random
 import math
 
 class Column:
+    """
+    Represents a column in the input file
+    """
     def __init__(self, index, cost, coveredRows):
         self.index: int = index
         self.cost: float = cost
         self.coveredRows: list[int] = coveredRows
 
 def compareColumns(a, b):
+    """
+    Compares two columns by their cost function value
+    """
     return a.costFunctionValue < b.costFunctionValue
 
 def costFunction1(cj, kj):
@@ -32,6 +38,15 @@ def costFunction7(cj, kj):
     return math.sqrt(cj) / (kj ** 2)
 
 def getFileData(fileName):
+    """
+    Takes the file name as input and returns the data from the file, the
+    file data must be in the following format:
+    
+    rowslabel <number of rows>
+    columnslabel <number of columns>
+    datalabel
+    <column index> <column cost> <row index> <row index> ...
+    """
     columnAndCost = []
     linesThatCoverColumn = []
     numRows = 0
@@ -59,21 +74,19 @@ def updateGlobalCoveredRows(globalCoveredRows, coveredRows) -> list[int]:
     return aux
 
 def createColumns(columnAndCost, linesThatCoverColumn) -> list[Column]:
+    """
+    Creates a list of columns, where each column has its index, cost and the lines that it covers
+    """
     columns = []
     for j in range(len(columnAndCost)):
         columns.append(Column(columnAndCost[j][0], columnAndCost[j][1], linesThatCoverColumn[j]))
 
     return columns
 
-def getMaxCost(columns) -> float:
-    maxCost = 0
-    for column in columns:
-        if column.cost > maxCost:
-            maxCost = column.cost
-
-    return maxCost
-
 def displayResult(solution) -> None:
+    """
+    Shows the result of the algorithm, which is the selected columns and the total cost of the solution
+    """
     totalCost = calcTotalCost(solution)
     print("Primary Cover:", [selectedColumn.index for selectedColumn in solution])
     print("Total Cost:", totalCost)
@@ -85,7 +98,36 @@ def calcTotalCost(solution) -> float:
 
     return totalCost
 
-def greedyAlgorithm(columns, numRows, numColumns) -> list[Column]:
+def verifySolution(solution, numRows) -> bool:
+    """
+    Verifies if the solution is valid, i.e., if all rows are covered
+    """
+    coveredRows = [0] * numRows
+    for column in solution:
+        for row in column.coveredRows:
+            coveredRows[row - 1] += 1
+
+    for i in coveredRows:
+        if i == 0:
+            return False
+
+    return True
+
+def construction1(columns, numRows, numColumns) -> list[Column]:
+    """
+    Greedy Construction 1 -> Selects the column that has the best cost per covered row,
+    where the cost per covered row is calculated by a cost function, which can be:
+    1 - cj
+    2 - cj / kj
+    3 - cj / log2(kj)
+    4 - cj / (kj * log2(kj))
+    5 - cj / (kj * log(kj))
+    6 - cj / (kj ** 2)
+    7 - sqrt(cj) / (kj ** 2)
+    Where cj is the cost of the column and kj is the number of uncovered rows covered by the column
+    In this implementation, the cost function is randomly chosen for each column added to the solution
+    """
+    
     solution = []
     kj = 0
 
@@ -126,7 +168,38 @@ def greedyAlgorithm(columns, numRows, numColumns) -> list[Column]:
         solution.append(columns[0])
         globalCoveredRows = updateGlobalCoveredRows(globalCoveredRows, columns[0].coveredRows)
 
+    if(not verifySolution(solution, numRows)):
+        print("Solution is invalid.")
+        exit(1)
+    
     return solution
+
+
+def construction2(columns, numRows):
+    """
+    Selects the column that covers the most uncovered rows
+    independent of the cost of the column
+    """
+
+    solution = []
+    notInSolution = columns.copy()
+    uncoveredRows = set(range(1, numRows + 1))
+    
+    while len(uncoveredRows) > 0:
+        bestColumn = max(notInSolution, key=lambda x: len(uncoveredRows & set(x.coveredRows)))
+        
+        uncoveredRows -= set(bestColumn.coveredRows)
+        
+        solution.append(bestColumn)
+        
+        notInSolution.remove(bestColumn)
+    
+    if(not verifySolution(solution, numRows)):
+        print("Solution is invalid.")
+        exit(1)
+    
+    return solution
+        
 
 def getCoveredRows(columns, numRows) -> list[int]:
     coveredRows = [0] * numRows
@@ -136,7 +209,15 @@ def getCoveredRows(columns, numRows) -> list[int]:
 
     return coveredRows
 
+
 def localSearchAlgorithm(columns, initialSolution, numRows):
+    """
+    Local Search Algorithm -> Removes D random columns from the solution and adds columns
+    from the line that covers the most uncovered rows, until there are no uncovered rows left.
+    Then, removes columns that if removed would not leave any uncovered rows, until there are no
+    such columns left.
+    """
+
     S = initialSolution.copy()
     
     N_S = len(S)
@@ -145,8 +226,8 @@ def localSearchAlgorithm(columns, initialSolution, numRows):
     
     S_line = [column for column in columns if column not in initialSolution]
     
-    p1 = random.uniform(0.05, 0.7)
-    p2 = random.uniform(1.1, 2)
+    p1 = random.uniform(0.2, 0.7)
+    p2 = random.uniform(1.1, 3)
     
     D = math.ceil(N_S * p1)
     E = math.ceil(Q_S * p2)
@@ -203,26 +284,34 @@ def localSearchAlgorithm(columns, initialSolution, numRows):
     return S
 
 def main():
-    # fileName = input("Input the file name to be read: ")
-    columnAndCost, linesThatCoverColumn, numRows, numColumns = getFileData("test1.txt")
+    fileName = input("Input the file name to be read: ")
+    columnAndCost, linesThatCoverColumn, numRows, numColumns = getFileData(fileName)
     columns = createColumns(columnAndCost, linesThatCoverColumn)
     
-    greedySolution = greedyAlgorithm(columns, numRows, numColumns)
+    greedySolution1 = construction1(columns, numRows, numColumns)
     
-    displayResult(greedySolution)
+    greedySolution2 = construction2(columns, numRows)
     
-    bestSolutionFound = greedySolution.copy()
+    print("File Analysed ", fileName)
+    print("Greedy Solution 1: ")
+    displayResult(greedySolution1)
+    
+    print("Greedy Solution 2: ")
+    displayResult(greedySolution2)
+        
+    bestSolutionFound = greedySolution1.copy()
     
     for _ in range(100):
-        solution = greedyAlgorithm(columns, numRows, numColumns)
-        for _ in range(1000):
+        solution = construction1(columns, numRows, numColumns)
+        for _ in range(100):
             aux = localSearchAlgorithm(columns, solution, numRows)
             if calcTotalCost(aux) < calcTotalCost(solution):
                 solution = aux.copy()
-            if calcTotalCost(solution) < calcTotalCost(bestSolutionFound):
-                bestSolutionFound = solution.copy()
-                print(calcTotalCost(bestSolutionFound))
+        if calcTotalCost(solution) < calcTotalCost(bestSolutionFound):
+            bestSolutionFound = solution.copy()
+            print(calcTotalCost(bestSolutionFound))
     
+    print("Best Solution Found on Local Search Algorithm: ")
     displayResult(bestSolutionFound)
 
 if __name__ == "__main__":
