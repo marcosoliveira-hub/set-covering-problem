@@ -283,25 +283,11 @@ def localSearchAlgorithm(columns, initialSolution, numRows):
     
     return S
 
-def main():
-    fileName = input("Input the file name to be read: ")
-    columnAndCost, linesThatCoverColumn, numRows, numColumns = getFileData(fileName)
-    columns = createColumns(columnAndCost, linesThatCoverColumn)
+def runLocalSearchAlgorithm(columns, numRows, numColumns):
     
-    greedySolution1 = construction1(columns, numRows, numColumns)
+    bestSolutionFound = construction1(columns, numRows, numColumns)
     
-    greedySolution2 = construction2(columns, numRows)
-    
-    print("File Analysed ", fileName)
-    print("Greedy Solution 1: ")
-    displayResult(greedySolution1)
-    
-    print("Greedy Solution 2: ")
-    displayResult(greedySolution2)
-        
-    bestSolutionFound = greedySolution1.copy()
-    
-    for _ in range(100):
+    for _ in range(1000):
         solution = construction1(columns, numRows, numColumns)
         for _ in range(100):
             aux = localSearchAlgorithm(columns, solution, numRows)
@@ -311,10 +297,91 @@ def main():
             bestSolutionFound = solution.copy()
             print(calcTotalCost(bestSolutionFound))
     
-    print("Best Solution Found on Local Search Algorithm: ")
-    displayResult(bestSolutionFound)
+    return bestSolutionFound
+
+def main():
+
+    option = input("Do you want to execute: \n \
+        1 - local search algorithm for all files\n \
+        2 - Greedy algorithms for all files\n \
+        3 - local search algorithm for a specific file\n \
+        4 - Greedy algorithms for a specific file\n \
+            Option: ")
+    
+    if option == '1':
+        print("Running test1, wren and wren4...")
+        for file in ['test1.txt', 'wren1.txt', 'wren4.txt']:
+            print("File Analysed -> ", file)
+            
+            columnAndCost, linesThatCoverColumn, numRows, numColumns = getFileData(file)
+            columns = createColumns(columnAndCost, linesThatCoverColumn)
+            
+            bestSolutionFound = runLocalSearchAlgorithm(columns, numRows, numColumns)
+
+            print("Best Solution Found on Local Search Algorithm on " + file + ": ")
+            displayResult(bestSolutionFound)
+    
+    elif option == '2':
+        print("Running test1, wren1 and wren4...")
+        for file in ['test1.txt', 'wren1.txt', 'wren4.txt']:
+            print("File Analysed -> ", file)
+            
+            columnAndCost, linesThatCoverColumn, numRows, numColumns = getFileData(file)
+            columns = createColumns(columnAndCost, linesThatCoverColumn)
+            
+            greedySolution1 = construction1(columns, numRows, numColumns)
+            
+            greedySolution2 = construction2(columns, numRows)
+            
+            print("Greedy Solution 1: ")
+            displayResult(greedySolution1)
+            
+            print("Greedy Solution 2: ")
+            displayResult(greedySolution2)
+            
+    elif option == '3':
+        fileName = input("Input the file name to be read: ")
+        columnAndCost, linesThatCoverColumn, numRows, numColumns = getFileData(fileName)
+        columns = createColumns(columnAndCost, linesThatCoverColumn)
+        
+        greedySolution1 = construction1(columns, numRows, numColumns)
+        
+        greedySolution2 = construction2(columns, numRows)
+        
+        print("Greedy algorithm solutions")
+        
+        print("File Analysed ", fileName)
+        print("Greedy Solution 1: ")
+        displayResult(greedySolution1)
+        
+        print("Greedy Solution 2: ")
+        displayResult(greedySolution2)
+        
+        print("Local Search Algorithm Solution: ")
+        
+        localSearchSolution = greedySolution1.copy()
+        
+        runLocalSearchAlgorithm(columns, numRows, numColumns)
+        
+        displayResult(localSearchSolution)
+    
+    elif option == '4':
+        fileName = input("Input the file name to be read: ")
+        columnAndCost, linesThatCoverColumn, numRows, numColumns = getFileData(fileName)
+        columns = createColumns(columnAndCost, linesThatCoverColumn)
+        
+        greedySolution1 = construction1(columns, numRows, numColumns)
+        
+        greedySolution2 = construction2(columns, numRows)
+        
+        print("Greedy algorithm solutions")
+        
+        print("File Analysed ", fileName)
+        print("Greedy Solution 1: ")
+        displayResult(greedySolution1)
+        
+        print("Greedy Solution 2: ")
+        displayResult(greedySolution2)
 
 if __name__ == "__main__":
     main()
-
-
