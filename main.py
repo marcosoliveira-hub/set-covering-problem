@@ -283,13 +283,20 @@ def localSearchAlgorithm(columns, initialSolution, numRows):
     
     return S
 
+
+# LOCAL PARA ALTERAR O NÚMERO DE EXECUÇÕES DO ALGORITMO
 def runLocalSearchAlgorithm(columns, numRows, numColumns):
     
     bestSolutionFound = construction1(columns, numRows, numColumns)
     
-    for _ in range(1000):
+    numIterations = input("Insert the number of iterations to be made (10.000 is a recommended\n \
+          value for a good execution time and final answer): ")
+    
+    numIterations = math.ceil(math.sqrt(int(numIterations)))
+    
+    for _ in range(numIterations):
         solution = construction1(columns, numRows, numColumns)
-        for _ in range(100):
+        for _ in range(numIterations):
             aux = localSearchAlgorithm(columns, solution, numRows)
             if calcTotalCost(aux) < calcTotalCost(solution):
                 solution = aux.copy()
@@ -302,15 +309,16 @@ def runLocalSearchAlgorithm(columns, numRows, numColumns):
 def main():
 
     option = input("Do you want to execute: \n \
-        1 - local search algorithm for all files\n \
+        1 - Local search algorithm for all files (Best Improvement)\n \
         2 - Greedy algorithms for all files\n \
-        3 - local search algorithm for a specific file\n \
+        3 - Local search algorithm for a specific file (Best Improvement)\n \
         4 - Greedy algorithms for a specific file\n \
-            Option: ")
+        5 - local Search algorithm for all files (First improvement)\n \
+            Option (index of the option): ")
     
     if option == '1':
         print("Running test1, wren and wren4...")
-        for file in ['test1.txt', 'wren1.txt', 'wren4.txt']:
+        for file in ['test1.dat', 'wren1.dat', 'wren4.dat']:
             print("File Analysed -> ", file)
             
             columnAndCost, linesThatCoverColumn, numRows, numColumns = getFileData(file)
@@ -323,7 +331,7 @@ def main():
     
     elif option == '2':
         print("Running test1, wren1 and wren4...")
-        for file in ['test1.txt', 'wren1.txt', 'wren4.txt']:
+        for file in ['test1.dat', 'wren1.dat', 'wren4.dat']:
             print("File Analysed -> ", file)
             
             columnAndCost, linesThatCoverColumn, numRows, numColumns = getFileData(file)
@@ -382,6 +390,26 @@ def main():
         
         print("Greedy Solution 2: ")
         displayResult(greedySolution2)
+    
+    elif option == '5':
+        print("Running test1, wren1 and wren4...")
+        for file in ['test1.dat', 'wren1.dat', 'wren4.dat']:
+            print("File Analysed -> ", file)
+            
+            columnAndCost, linesThatCoverColumn, numRows, numColumns = getFileData(file)
+            columns = createColumns(columnAndCost, linesThatCoverColumn)
+            
+            greedySolution1 = construction1(columns, numRows, numColumns)
+            
+            print("Greedy Solution: ")
+            displayResult(greedySolution1)
+
+            print("Local Search Algorithm Solution: ")
+            displayResult(localSearchAlgorithm(columns, greedySolution1, numRows))
+    
+    else:
+        print("Invalid option.")
+        exit(1)
 
 if __name__ == "__main__":
     main()
