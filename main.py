@@ -290,6 +290,8 @@ def runLocalSearchAlgorithm(columns, numRows, numColumns, iterations):
     bestSolutionFound = construction1(columns, numRows, numColumns)
     
     numIterations = math.ceil(math.sqrt(int(iterations)))
+
+    counter = 1
     
     for _ in range(numIterations):
         solution = construction1(columns, numRows, numColumns)
@@ -299,7 +301,7 @@ def runLocalSearchAlgorithm(columns, numRows, numColumns, iterations):
                 solution = aux.copy()
         if calcTotalCost(solution) < calcTotalCost(bestSolutionFound):
             bestSolutionFound = solution.copy()
-            print(calcTotalCost(bestSolutionFound))
+            print(counter + " Melhoria(s) encontradas:" + calcTotalCost(bestSolutionFound))
     
     return bestSolutionFound
 
@@ -316,8 +318,8 @@ def main():
     if option == '1':
         numIterations = input("Insert the number of iterations to be made (10.000 is a recommended\n \
           value for a good execution time and final answer): ")
-        print("Running test1, wren and wren4...")
-        for file in ['test1.dat', 'wren1.dat', 'wren4.dat']:
+        print("Running tests...")
+        for file in ['test1.dat', 'test2.dat', 'test3.dat', 'test4.dat', 'wren1.dat', 'wren2.dat', 'wren3.dat', 'wren4.dat']:
             print("File Analysed -> ", file)
             
             columnAndCost, linesThatCoverColumn, numRows, numColumns = getFileData(file)
@@ -327,10 +329,12 @@ def main():
 
             print("Best Solution Found on Local Search Algorithm on " + file + ": ")
             displayResult(bestSolutionFound)
+
+            print("\n\n")
     
     elif option == '2':
-        print("Running test1, wren1 and wren4...")
-        for file in ['test1.dat', 'wren1.dat', 'wren4.dat']:
+        print("Running tests...")
+        for file in ['test1.dat', 'test2.dat', 'test3.dat', 'test4.dat', 'wren1.dat', 'wren2.dat', 'wren3.dat', 'wren4.dat']:
             print("File Analysed -> ", file)
             
             columnAndCost, linesThatCoverColumn, numRows, numColumns = getFileData(file)
@@ -345,6 +349,8 @@ def main():
             
             print("Greedy Solution 2: ")
             displayResult(greedySolution2)
+
+            print("\n\n")
             
     elif option == '3':
         fileName = input("Input the file name to be read: ")
@@ -393,8 +399,8 @@ def main():
         displayResult(greedySolution2)
     
     elif option == '5':
-        print("Running test1, wren1 and wren4...")
-        for file in ['test1.dat', 'wren1.dat', 'wren4.dat']:
+        print("Running tests...")
+        for file in ['test1.dat', 'test2.dat', 'test3.dat', 'test4.dat', 'wren1.dat', 'wren2.dat', 'wren3.dat', 'wren4.dat']:
             print("File Analysed -> ", file)
             
             columnAndCost, linesThatCoverColumn, numRows, numColumns = getFileData(file)
@@ -407,6 +413,7 @@ def main():
 
             print("Local Search Algorithm Solution: ")
             displayResult(localSearchAlgorithm(columns, greedySolution1, numRows))
+            print("\n\n")
     
     else:
         print("Invalid option.")
