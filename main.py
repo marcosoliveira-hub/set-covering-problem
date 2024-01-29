@@ -88,7 +88,7 @@ def displayResult(solution) -> None:
     Shows the result of the algorithm, which is the selected columns and the total cost of the solution
     """
     totalCost = calcTotalCost(solution)
-    print("Primary Cover:", [selectedColumn.index for selectedColumn in solution])
+    print("Selected Columns:", [selectedColumn.index for selectedColumn in solution])
     print("Total Cost:", totalCost)
 
 def calcTotalCost(solution) -> float:
@@ -285,14 +285,11 @@ def localSearchAlgorithm(columns, initialSolution, numRows):
 
 
 # LOCAL PARA ALTERAR O NÚMERO DE EXECUÇÕES DO ALGORITMO
-def runLocalSearchAlgorithm(columns, numRows, numColumns):
+def runLocalSearchAlgorithm(columns, numRows, numColumns, iterations):
     
     bestSolutionFound = construction1(columns, numRows, numColumns)
     
-    numIterations = input("Insert the number of iterations to be made (10.000 is a recommended\n \
-          value for a good execution time and final answer): ")
-    
-    numIterations = math.ceil(math.sqrt(int(numIterations)))
+    numIterations = math.ceil(math.sqrt(int(iterations)))
     
     for _ in range(numIterations):
         solution = construction1(columns, numRows, numColumns)
@@ -317,6 +314,8 @@ def main():
             Option (index of the option): ")
     
     if option == '1':
+        numIterations = input("Insert the number of iterations to be made (10.000 is a recommended\n \
+          value for a good execution time and final answer): ")
         print("Running test1, wren and wren4...")
         for file in ['test1.dat', 'wren1.dat', 'wren4.dat']:
             print("File Analysed -> ", file)
@@ -324,7 +323,7 @@ def main():
             columnAndCost, linesThatCoverColumn, numRows, numColumns = getFileData(file)
             columns = createColumns(columnAndCost, linesThatCoverColumn)
             
-            bestSolutionFound = runLocalSearchAlgorithm(columns, numRows, numColumns)
+            bestSolutionFound = runLocalSearchAlgorithm(columns, numRows, numColumns, numIterations)
 
             print("Best Solution Found on Local Search Algorithm on " + file + ": ")
             displayResult(bestSolutionFound)
@@ -364,15 +363,17 @@ def main():
         
         print("Greedy Solution 2: ")
         displayResult(greedySolution2)
-        
+
+        numIterations = input("Insert the number of iterations to be made (10.000 is a recommended\n \
+          value for a good execution time and final answer): ")
+
+        bestSolutionFound = runLocalSearchAlgorithm(columns, numRows, numColumns, numIterations)
+
         print("Local Search Algorithm Solution: ")
         
-        localSearchSolution = greedySolution1.copy()
-        
-        runLocalSearchAlgorithm(columns, numRows, numColumns)
-        
-        displayResult(localSearchSolution)
-    
+        displayResult(bestSolutionFound)
+
+
     elif option == '4':
         fileName = input("Input the file name to be read: ")
         columnAndCost, linesThatCoverColumn, numRows, numColumns = getFileData(fileName)
