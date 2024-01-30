@@ -141,7 +141,7 @@ def construction1(columns, numRows, numColumns) -> list[Column]:
             newCoveredRows = aux.count(1)
             kj = newCoveredRows - alreadyCoveredRows
 
-            costFunction = random.randint(1, 7)
+            costFunction = 2
 
             if kj == 0:
                 columns[j].costFunctionValue = float('inf')
@@ -272,7 +272,7 @@ def localSearchAlgorithm(columns, initialSolution, numRows, isBestImprovement = 
                     bestColumn = column
             newColumn = bestColumn
         else:
-            newColumn = K[random.randint(0, len(K) - 1)]
+            newColumn = K[0]
         
         for row in newColumn.coveredRows:
             if solutionCoveredRows[row - 1] == 0:
@@ -357,12 +357,18 @@ def main():
             
             greedySolution2 = construction2(columns, numRows)
             
+            start = timer()
             print("Greedy Solution 1: ")
             displayResult(greedySolution1)
+            end = timer()
+            print(f"Execution Time: {end - start} seconds.")
             
+            start = timer()
             print("Greedy Solution 2: ")
             displayResult(greedySolution2)
-
+            end = timer()
+            print(f"Execution Time: {end - start} seconds.")
+            
             print("\n")
             
     elif option == '3':
