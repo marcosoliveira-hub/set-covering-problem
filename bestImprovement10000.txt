@@ -1,0 +1,102 @@
+Do you want to execute: 
+         1 - Local search algorithm for all files (Best Improvement)
+         2 - Greedy algorithms for all files
+         3 - Local search algorithm for a specific file (Best Improvement)
+         4 - Greedy algorithms for a specific file
+         5 - local Search algorithm for all files (First improvement)
+             Option (index of the option): 
+
+Insert the number of iterations to be made (10.000 is a recommended
+           value for a good execution time and final answer): Running tests...
+File Analysed ->  test1.dat
+1 Melhoria(s) encontradas: 599.2099999999999
+2 Melhoria(s) encontradas: 597.29
+3 Melhoria(s) encontradas: 594.7599999999999
+4 Melhoria(s) encontradas: 557.8599999999999
+Execution time: 9.191632600035518 seconds
+Best Solution Found on Local Search Algorithm on test1.dat: 
+Selected Columns: [103, 10, 58, 222, 99, 194, 179, 22, 190]
+Total Cost: 557.8599999999999
+
+
+File Analysed ->  test2.dat
+1 Melhoria(s) encontradas: 579.48
+2 Melhoria(s) encontradas: 578.7199999999999
+3 Melhoria(s) encontradas: 578.6899999999999
+4 Melhoria(s) encontradas: 550.7499999999999
+5 Melhoria(s) encontradas: 544.5999999999999
+6 Melhoria(s) encontradas: 543.8399999999999
+Execution time: 15.292730799992569 seconds
+Best Solution Found on Local Search Algorithm on test2.dat: 
+Selected Columns: [434, 449, 302, 468, 135, 151, 328, 230, 128]
+Total Cost: 543.8399999999999
+
+
+File Analysed ->  test3.dat
+1 Melhoria(s) encontradas: 566.17
+2 Melhoria(s) encontradas: 532.6999999999999
+3 Melhoria(s) encontradas: 517.5799999999999
+4 Melhoria(s) encontradas: 515.3
+Execution time: 21.471363199991174 seconds
+Best Solution Found on Local Search Algorithm on test3.dat: 
+Selected Columns: [653, 655, 103, 265, 588, 176, 341, 445, 295]
+Total Cost: 515.3
+
+
+File Analysed ->  test4.dat
+1 Melhoria(s) encontradas: 1209.0699999999997
+2 Melhoria(s) encontradas: 1174.36
+3 Melhoria(s) encontradas: 1171.4599999999998
+4 Melhoria(s) encontradas: 1157.2999999999997
+5 Melhoria(s) encontradas: 1157.0799999999997
+Execution time: 49.85710750008002 seconds
+Best Solution Found on Local Search Algorithm on test4.dat: 
+Selected Columns: [253, 461, 296, 359, 197, 226, 326, 244, 176, 44, 468, 484, 165, 211, 194, 56, 41, 433, 72]
+Total Cost: 1157.0799999999997
+
+
+File Analysed ->  wren1.dat
+1 Melhoria(s) encontradas: 8196.0
+2 Melhoria(s) encontradas: 8142.0
+Execution time: 124.81121590000112 seconds
+Best Solution Found on Local Search Algorithm on wren1.dat: 
+Selected Columns: [208, 338, 126, 2, 75, 324, 323, 345, 488, 146, 303, 249, 250, 1, 240, 252]
+Total Cost: 8142.0
+
+
+File Analysed ->  wren2.dat
+1 Melhoria(s) encontradas: 14391.0
+2 Melhoria(s) encontradas: 14204.0
+3 Melhoria(s) encontradas: 14190.0
+4 Melhoria(s) encontradas: 14169.0
+5 Melhoria(s) encontradas: 14153.0
+6 Melhoria(s) encontradas: 14006.0
+7 Melhoria(s) encontradas: 14001.0
+Execution time: 1645.7145443999907 seconds
+Best Solution Found on Local Search Algorithm on wren2.dat: 
+Selected Columns: [5482, 5483, 958, 5050, 5005, 5484, 5071, 5481, 5459, 2393, 4024, 3649, 5093, 5368, 5263, 5328, 4997, 5399, 4979, 5460, 5449, 5389, 4826, 5134, 5409, 5427, 5522, 5503, 5477, 2399, 2790, 2207, 1535]
+Total Cost: 14001.0
+
+
+File Analysed ->  wren3.dat
+1 Melhoria(s) encontradas: 14292.0
+2 Melhoria(s) encontradas: 13951.0
+3 Melhoria(s) encontradas: 13847.0
+Execution time: 1394.9526716999244 seconds
+Best Solution Found on Local Search Algorithm on wren3.dat: 
+Selected Columns: [2245, 3209, 3009, 4839, 4919, 1286, 4624, 4869, 4862, 4529, 4650, 4220, 2220, 4901, 4937, 388, 4964, 4881, 4936, 1164, 4882, 4634, 4920, 4969, 4696, 4551, 3840, 4568, 2178, 1690, 3966, 4950]
+Total Cost: 13847.0
+
+
+File Analysed ->  wren4.dat
+1 Melhoria(s) encontradas: 62163.0
+2 Melhoria(s) encontradas: 61975.0
+3 Melhoria(s) encontradas: 61782.0
+4 Melhoria(s) encontradas: 61622.0
+5 Melhoria(s) encontradas: 61526.0
+Execution time: 12927.611607900006 seconds
+Best Solution Found on Local Search Algorithm on wren4.dat: 
+Selected Columns: [561, 306, 915, 2417, 2762, 1275, 2716, 937, 3367, 33, 647, 2624, 2475, 729, 1020, 1315, 1538, 285, 759, 3389, 2538, 2217, 1867, 844, 979, 2768, 1093, 2429, 3718, 2833, 230, 263, 3407, 3456, 133, 1229, 2893, 2047, 1599, 1284, 2195, 3809, 2646, 194, 2390, 3358, 2741, 779, 3134, 2552, 1836, 2734, 851, 685, 248, 142, 441, 548, 4214, 20, 651, 1626, 3988, 2557, 1741, 4320, 1385, 525, 533, 181, 4337, 1236, 2883, 1170, 218, 93, 2733, 418, 3660, 2246, 2728, 738, 3857, 2878, 1156, 599, 143, 3111, 2449, 3261, 1482, 193, 1131, 3108, 1088, 3461, 897, 607, 3328, 2970, 1721, 1012, 1167, 3275, 3070, 2577, 888, 512, 3876, 2484, 2627, 3038, 3423, 2518, 4272, 3934, 2277, 1500, 1785, 3352, 274, 3494, 4158, 2794, 4444, 1802]
+Total Cost: 61526.0
+
+

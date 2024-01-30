@@ -1,5 +1,6 @@
 import random
 import math
+from timeit import default_timer as timer
 
 class Column:
     """
@@ -210,7 +211,7 @@ def getCoveredRows(columns, numRows) -> list[int]:
     return coveredRows
 
 
-def localSearchAlgorithm(columns, initialSolution, numRows):
+def localSearchAlgorithm(columns, initialSolution, numRows, isBestImprovement = True):
     """
     Local Search Algorithm -> Removes D random columns from the solution and adds columns
     from the line that covers the most uncovered rows, until there are no uncovered rows left.
@@ -264,7 +265,14 @@ def localSearchAlgorithm(columns, initialSolution, numRows):
         
         K = [S_line_E[i] for i, b in enumerate(beta) if b == minBeta]
         
-        newColumn = K[random.randint(0, len(K) - 1)]
+        if(isBestImprovement):
+            bestColumn = K[0]
+            for column in K:
+                if len(column.coveredRows) > len(bestColumn.coveredRows):
+                    bestColumn = column
+            newColumn = bestColumn
+        else:
+            newColumn = K[random.randint(0, len(K) - 1)]
         
         for row in newColumn.coveredRows:
             if solutionCoveredRows[row - 1] == 0:
@@ -285,23 +293,27 @@ def localSearchAlgorithm(columns, initialSolution, numRows):
 
 
 # LOCAL PARA ALTERAR O NÚMERO DE EXECUÇÕES DO ALGORITMO
-def runLocalSearchAlgorithm(columns, numRows, numColumns, iterations):
+def runLocalSearchAlgorithm(columns, numRows, numColumns, iterations, isBestImprovement = True):
     
     bestSolutionFound = construction1(columns, numRows, numColumns)
     
     numIterations = math.ceil(math.sqrt(int(iterations)))
 
-    counter = 1
+    counter = 0
     
+    start = timer()
     for _ in range(numIterations):
         solution = construction1(columns, numRows, numColumns)
         for _ in range(numIterations):
-            aux = localSearchAlgorithm(columns, solution, numRows)
+            aux = localSearchAlgorithm(columns, solution, numRows, isBestImprovement)
             if calcTotalCost(aux) < calcTotalCost(solution):
                 solution = aux.copy()
         if calcTotalCost(solution) < calcTotalCost(bestSolutionFound):
             bestSolutionFound = solution.copy()
-            print(counter + " Melhoria(s) encontradas:" + calcTotalCost(bestSolutionFound))
+            counter += 1
+            print(f"{counter} Melhoria(s) encontradas: {calcTotalCost(bestSolutionFound)}")
+    end = timer()
+    print(f"Execution time: {end - start} seconds")
     
     return bestSolutionFound
 
@@ -314,6 +326,7 @@ def main():
         4 - Greedy algorithms for a specific file\n \
         5 - local Search algorithm for all files (First improvement)\n \
             Option (index of the option): ")
+    print("\n")
     
     if option == '1':
         numIterations = input("Insert the number of iterations to be made (10.000 is a recommended\n \
@@ -325,12 +338,12 @@ def main():
             columnAndCost, linesThatCoverColumn, numRows, numColumns = getFileData(file)
             columns = createColumns(columnAndCost, linesThatCoverColumn)
             
-            bestSolutionFound = runLocalSearchAlgorithm(columns, numRows, numColumns, numIterations)
+            bestSolutionFound = runLocalSearchAlgorithm(columns, numRows, numColumns, numIterations, True)
 
             print("Best Solution Found on Local Search Algorithm on " + file + ": ")
             displayResult(bestSolutionFound)
 
-            print("\n\n")
+            print("\n")
     
     elif option == '2':
         print("Running tests...")
@@ -350,7 +363,7 @@ def main():
             print("Greedy Solution 2: ")
             displayResult(greedySolution2)
 
-            print("\n\n")
+            print("\n")
             
     elif option == '3':
         fileName = input("Input the file name to be read: ")
@@ -373,7 +386,7 @@ def main():
         numIterations = input("Insert the number of iterations to be made (10.000 is a recommended\n \
           value for a good execution time and final answer): ")
 
-        bestSolutionFound = runLocalSearchAlgorithm(columns, numRows, numColumns, numIterations)
+        bestSolutionFound = runLocalSearchAlgorithm(columns, numRows, numColumns, numIterations, True)
 
         print("Local Search Algorithm Solution: ")
         
@@ -399,6 +412,8 @@ def main():
         displayResult(greedySolution2)
     
     elif option == '5':
+        numIterations = input("Insert the number of iterations to be made (10.000 is a recommended\n \
+          value for a good execution time and final answer): ")
         print("Running tests...")
         for file in ['test1.dat', 'test2.dat', 'test3.dat', 'test4.dat', 'wren1.dat', 'wren2.dat', 'wren3.dat', 'wren4.dat']:
             print("File Analysed -> ", file)
@@ -407,13 +422,14 @@ def main():
             columns = createColumns(columnAndCost, linesThatCoverColumn)
             
             greedySolution1 = construction1(columns, numRows, numColumns)
-            
-            print("Greedy Solution: ")
-            displayResult(greedySolution1)
 
             print("Local Search Algorithm Solution: ")
-            displayResult(localSearchAlgorithm(columns, greedySolution1, numRows))
-            print("\n\n")
+            
+            solution = runLocalSearchAlgorithm(columns, numRows, numColumns, numIterations, False)
+            
+            displayResult(solution)
+            
+            print("\n")
     
     else:
         print("Invalid option.")
