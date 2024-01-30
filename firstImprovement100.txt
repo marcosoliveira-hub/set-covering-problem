@@ -1,0 +1,83 @@
+Do you want to execute: 
+         1 - Local search algorithm for all files (Best Improvement)
+         2 - Greedy algorithms for all files
+         3 - Local search algorithm for a specific file (Best Improvement)
+         4 - Greedy algorithms for a specific file
+         5 - local Search algorithm for all files (First improvement)
+             Option (index of the option): 
+
+Insert the number of iterations to be made (10.000 is a recommended
+           value for a good execution time and final answer): Running tests...
+File Analysed ->  test1.dat
+Local Search Algorithm Solution: 
+1 Melhoria(s) encontradas: 612.6399999999999
+2 Melhoria(s) encontradas: 597.29
+Execution time: 0.11213839997071773 seconds
+Selected Columns: [261, 44, 10, 128, 59, 278, 155, 242, 129, 132]
+Total Cost: 597.29
+
+
+File Analysed ->  test2.dat
+Local Search Algorithm Solution: 
+1 Melhoria(s) encontradas: 629.7499999999999
+2 Melhoria(s) encontradas: 594.14
+3 Melhoria(s) encontradas: 585.96
+Execution time: 0.18681449990253896 seconds
+Selected Columns: [420, 421, 331, 84, 431, 83, 356, 209, 265, 36]
+Total Cost: 585.96
+
+
+File Analysed ->  test3.dat
+Local Search Algorithm Solution: 
+1 Melhoria(s) encontradas: 562.3
+Execution time: 0.26432940002996475 seconds
+Selected Columns: [10, 341, 265, 113, 584, 4, 347, 664, 226, 680]
+Total Cost: 562.3
+
+
+File Analysed ->  test4.dat
+Local Search Algorithm Solution: 
+1 Melhoria(s) encontradas: 1208.66
+2 Melhoria(s) encontradas: 1175.1599999999999
+Execution time: 0.4991060000611469 seconds
+Selected Columns: [326, 197, 194, 484, 11, 176, 244, 461, 56, 302, 490, 296, 359, 226, 211, 468, 165, 307, 260]
+Total Cost: 1175.1599999999999
+
+
+File Analysed ->  wren1.dat
+Local Search Algorithm Solution: 
+1 Melhoria(s) encontradas: 9097.0
+2 Melhoria(s) encontradas: 8821.0
+3 Melhoria(s) encontradas: 8715.0
+Execution time: 1.4170939000323415 seconds
+Selected Columns: [240, 88, 347, 15, 330, 398, 205, 242, 166, 112, 250, 249, 329, 140, 4, 1, 208]
+Total Cost: 8715.0
+
+
+File Analysed ->  wren2.dat
+Local Search Algorithm Solution: 
+1 Melhoria(s) encontradas: 14547.0
+2 Melhoria(s) encontradas: 14397.0
+3 Melhoria(s) encontradas: 14323.0
+Execution time: 24.56284519995097 seconds
+Selected Columns: [5482, 5409, 5050, 4992, 5399, 4979, 5460, 5503, 5522, 436, 3847, 5363, 5448, 4999, 5484, 5071, 5427, 5481, 2791, 817, 5133, 5387, 5419, 5263, 5408, 5459, 5389, 5477, 2993, 2393, 5147, 2763, 5142, 5502]
+Total Cost: 14323.0
+
+
+File Analysed ->  wren3.dat
+Local Search Algorithm Solution: 
+1 Melhoria(s) encontradas: 14347.0
+Execution time: 28.803392899921164 seconds
+Selected Columns: [4937, 4862, 388, 3166, 3580, 3013, 4126, 4901, 646, 1164, 4634, 4696, 628, 1267, 4839, 4869, 4964, 4936, 4919, 4882, 4969, 4551, 4529, 2746, 4546, 4334, 4650, 4568, 3458, 4790, 4152, 4881, 4965]
+Total Cost: 14347.0
+
+
+File Analysed ->  wren4.dat
+Local Search Algorithm Solution: 
+1 Melhoria(s) encontradas: 63744.0
+2 Melhoria(s) encontradas: 63469.0
+Execution time: 223.354161700001 seconds
+Selected Columns: [3365, 2439, 2396, 1093, 838, 2612, 3375, 2662, 2716, 2970, 2434, 2538, 1780, 1895, 3080, 973, 133, 2274, 2646, 763, 2413, 3111, 1482, 183, 1877, 2528, 3423, 264, 248, 2561, 4535, 552, 1272, 142, 2893, 938, 3988, 1633, 1836, 2057, 139, 1065, 533, 194, 560, 2760, 2801, 736, 2734, 299, 681, 2757, 915, 2827, 2405, 2735, 2087, 1160, 3328, 218, 2728, 1229, 1084, 777, 73, 1802, 4318, 3263, 1389, 3468, 1559, 894, 1021, 1252, 1309, 3936, 1735, 3903, 4469, 36, 182, 1007, 947, 3176, 1968, 2949, 2640, 3214, 512, 4062, 1289, 1985, 2451, 3637, 4197, 616, 3432, 3719, 442, 230, 649, 285, 3810, 2234, 3500, 2809, 304, 3389, 3456, 3250, 1536, 85, 2630, 3876, 2246, 2358, 1168, 2833, 2483, 534, 1732, 893, 1377, 4374, 4444, 2624, 939, 2047, 599]
+Total Cost: 63469.0
+
+

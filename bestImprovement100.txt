@@ -1,0 +1,84 @@
+Do you want to execute: 
+         1 - Local search algorithm for all files (Best Improvement)
+         2 - Greedy algorithms for all files
+         3 - Local search algorithm for a specific file (Best Improvement)
+         4 - Greedy algorithms for a specific file
+         5 - local Search algorithm for all files (First improvement)
+             Option (index of the option): 
+
+Insert the number of iterations to be made (10.000 is a recommended
+           value for a good execution time and final answer): Running tests...
+File Analysed ->  test1.dat
+1 Melhoria(s) encontradas: 612.64
+2 Melhoria(s) encontradas: 604.75
+3 Melhoria(s) encontradas: 597.29
+Execution time: 0.11224819999188185 seconds
+Best Solution Found on Local Search Algorithm on test1.dat: 
+Selected Columns: [44, 242, 278, 10, 129, 155, 128, 59, 261, 132]
+Total Cost: 597.29
+
+
+File Analysed ->  test2.dat
+1 Melhoria(s) encontradas: 629.7499999999999
+2 Melhoria(s) encontradas: 626.6999999999999
+Execution time: 0.18868320004548877 seconds
+Best Solution Found on Local Search Algorithm on test2.dat: 
+Selected Columns: [421, 172, 431, 265, 150, 331, 420, 95, 62, 143, 209]
+Total Cost: 626.6999999999999
+
+
+File Analysed ->  test3.dat
+1 Melhoria(s) encontradas: 562.3
+Execution time: 0.2617960999486968 seconds
+Best Solution Found on Local Search Algorithm on test3.dat: 
+Selected Columns: [113, 347, 265, 226, 341, 4, 10, 584, 664, 680]
+Total Cost: 562.3
+
+
+File Analysed ->  test4.dat
+1 Melhoria(s) encontradas: 1161.97
+Execution time: 0.4972945998888463 seconds
+Best Solution Found on Local Search Algorithm on test4.dat: 
+Selected Columns: [197, 44, 294, 165, 194, 176, 296, 211, 359, 461, 41, 326, 226, 484, 468, 56, 244, 253, 401]
+Total Cost: 1161.97
+
+
+File Analysed ->  wren1.dat
+1 Melhoria(s) encontradas: 9008.0
+2 Melhoria(s) encontradas: 8850.0
+3 Melhoria(s) encontradas: 8845.0
+Execution time: 1.3933168000075966 seconds
+Best Solution Found on Local Search Algorithm on wren1.dat: 
+Selected Columns: [75, 1, 431, 244, 240, 345, 249, 203, 126, 210, 323, 327, 51, 250, 145, 359, 208]
+Total Cost: 8845.0
+
+
+File Analysed ->  wren2.dat
+1 Melhoria(s) encontradas: 14628.0
+2 Melhoria(s) encontradas: 14523.0
+3 Melhoria(s) encontradas: 14353.0
+4 Melhoria(s) encontradas: 14135.0
+Execution time: 20.728475000010803 seconds
+Best Solution Found on Local Search Algorithm on wren2.dat: 
+Selected Columns: [5044, 4979, 5449, 5483, 2393, 5263, 4863, 5387, 5460, 5389, 5502, 5484, 5399, 5409, 5481, 5477, 2789, 3649, 2779, 5050, 5148, 958, 5093, 5232, 5071, 5427, 5459, 5503, 2415, 2992, 5518, 5355, 5040]
+Total Cost: 14135.0
+
+
+File Analysed ->  wren3.dat
+1 Melhoria(s) encontradas: 14690.0
+2 Melhoria(s) encontradas: 14448.0
+Execution time: 17.476912699989043 seconds
+Best Solution Found on Local Search Algorithm on wren3.dat: 
+Selected Columns: [4862, 4964, 4696, 4551, 4683, 3166, 3458, 4126, 4937, 4634, 4969, 659, 1150, 2849, 2435, 4575, 3011, 4790, 3715, 2757, 4839, 4901, 4869, 4881, 4936, 4919, 4882, 3417, 2211, 4650, 4568, 4152, 4965]
+Total Cost: 14448.0
+
+
+File Analysed ->  wren4.dat
+1 Melhoria(s) encontradas: 64109.0
+2 Melhoria(s) encontradas: 63297.0
+Execution time: 244.75522709998768 seconds
+Best Solution Found on Local Search Algorithm on wren4.dat: 
+Selected Columns: [4194, 1552, 855, 644, 33, 2326, 227, 2347, 3261, 2019, 3415, 3811, 1167, 426, 3662, 1168, 1393, 2047, 183, 607, 317, 2763, 1815, 2970, 1034, 2439, 3229, 939, 2752, 1377, 2246, 133, 4062, 2145, 938, 1482, 1136, 896, 1266, 533, 3900, 1691, 678, 843, 599, 1802, 221, 4350, 558, 2624, 1080, 3718, 1104, 1777, 308, 2400, 2626, 655, 523, 2484, 218, 90, 915, 2538, 1896, 2924, 1084, 3107, 763, 4444, 3111, 4450, 2804, 2428, 2729, 966, 2066, 2446, 181, 2800, 2814, 1312, 3358, 139, 1284, 2833, 3122, 2734, 4197, 1868, 4523, 228, 290, 3530, 4514, 2753, 2436, 1365, 3389, 3500, 276, 510, 4439, 2775, 1273, 3273, 3456, 883, 265, 2660, 3934, 1158, 1725, 978, 2561, 3001, 2733, 2630, 3180, 4208, 514, 142, 1574, 3426, 1229, 2893, 698, 78]
+Total Cost: 63297.0
+
+
