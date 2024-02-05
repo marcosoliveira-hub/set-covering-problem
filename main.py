@@ -68,6 +68,10 @@ def getFileData(fileName):
     return columnAndCost, linesThatCoverColumn, numRows, numColumns
 
 def updateGlobalCoveredRows(globalCoveredRows, coveredRows) -> list[int]:
+    """
+    Auxiliar function to update the global covered rows list using the
+    covered rows of the current column
+    """
     aux = globalCoveredRows.copy()
     for i in coveredRows:
         aux[i - 1] = 1
@@ -141,7 +145,7 @@ def construction1(columns, numRows, numColumns) -> list[Column]:
             newCoveredRows = aux.count(1)
             kj = newCoveredRows - alreadyCoveredRows
 
-            costFunction = 2
+            costFunction = random.randint(1, 7)
 
             if kj == 0:
                 columns[j].costFunctionValue = float('inf')
@@ -292,7 +296,7 @@ def localSearchAlgorithm(columns, initialSolution, numRows, isBestImprovement = 
     return S
 
 
-# LOCAL PARA ALTERAR O NÚMERO DE EXECUÇÕES DO ALGORITMO
+# Function to run multiple local search instances and change the number of iterations
 def runLocalSearchAlgorithm(columns, numRows, numColumns, iterations, isBestImprovement = True):
     
     bestSolutionFound = construction1(columns, numRows, numColumns)
