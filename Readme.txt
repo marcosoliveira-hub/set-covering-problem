@@ -17,12 +17,15 @@ da linguagem Python "pypy", apesar de não ser obrigatório para a execução do
 
 link para o compilador pypy -> https://www.pypy.org/
 
+OBS: o tempo de execução do relatório é baseado na execução da implementação oficial
+do Python e não do pypy.
+
 Entradas:
 
-    O código tem alguns testes pré-implementados, os quais são mostrados no próprio
-terminal ao executar o código.
-    Tenha em mente que algumas opções precisam da entrada de nomes de arquivos, e
-se faz necessário ou definir o caminho até o arquivo com sua devida extensão.
+    O código tem alguns testes pré-implementados a escolha do usuário, basta selecionar a
+opção desejada no terminal.
+    Tenha em mente que algumas opções precisam da entrada de nomes de arquivos e/ou número de iterações, e
+se faz necessário ou definir o caminho até o arquivo com sua devida extensão (.txt, .dat, etc).
     Relembrar também que o formato dos dados de entrada devem ser da seguinte maneira:
 
 (label) <numero-de-linhas>
