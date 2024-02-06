@@ -145,7 +145,7 @@ def construction1(columns, numRows, numColumns) -> list[Column]:
             newCoveredRows = aux.count(1)
             kj = newCoveredRows - alreadyCoveredRows
 
-            costFunction = random.randint(1, 7)
+            costFunction = 2
 
             if kj == 0:
                 columns[j].costFunctionValue = float('inf')
@@ -336,7 +336,7 @@ def main():
         numIterations = input("Insert the number of iterations to be made (10.000 is a recommended\n \
           value for a good execution time and final answer): ")
         print("Running tests...")
-        for file in ['test1.dat', 'test2.dat', 'test3.dat', 'test4.dat', 'wren1.dat', 'wren2.dat', 'wren3.dat', 'wren4.dat']:
+        for file in ["Teste_01.dat", "Teste_02.dat", "Teste_03.dat", "Teste_04.dat", "Wren_01.dat", "Wren_02.dat", "Wren_03.dat", "Wren_04.dat"]:
             print("File Analysed -> ", file)
             
             columnAndCost, linesThatCoverColumn, numRows, numColumns = getFileData(file)
@@ -351,7 +351,7 @@ def main():
     
     elif option == '2':
         print("Running tests...")
-        for file in ['test1.dat', 'test2.dat', 'test3.dat', 'test4.dat', 'wren1.dat', 'wren2.dat', 'wren3.dat', 'wren4.dat']:
+        for file in ["Teste_01.dat", "Teste_02.dat", "Teste_03.dat", "Teste_04.dat", "Wren_01.dat", "Wren_02.dat", "Wren_03.dat", "Wren_04.dat"]:
             print("File Analysed -> ", file)
             
             columnAndCost, linesThatCoverColumn, numRows, numColumns = getFileData(file)
@@ -425,7 +425,7 @@ def main():
         numIterations = input("Insert the number of iterations to be made (10.000 is a recommended\n \
           value for a good execution time and final answer): ")
         print("Running tests...")
-        for file in ['test1.dat', 'test2.dat', 'test3.dat', 'test4.dat', 'wren1.dat', 'wren2.dat', 'wren3.dat', 'wren4.dat']:
+        for file in ["Teste_01.dat", "Teste_02.dat", "Teste_03.dat", "Teste_04.dat", "Wren_01.dat", "Wren_02.dat", "Wren_03.dat", "Wren_04.dat"]:
             print("File Analysed -> ", file)
             
             columnAndCost, linesThatCoverColumn, numRows, numColumns = getFileData(file)
